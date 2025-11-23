@@ -1,0 +1,56 @@
+
+1. Core Concept
+
+Multi-agent systems in Agent Development Kit (ADK) use a tree structure: Parent agent → Sub-agents 
+Agents can transfer conversation:To sub-agent 
+Back to parent 
+To peer agent (same parent) 
+Peer transfer can be disabled for control. 
+Why tree structure?Predictable and reliable conversations. 
+Prevents calling wrong agents in complex systems. 
+
+
+2. Types of Agents
+LLM-based Agents
+
+Act as the “brains” of the application. 
+Powered by Large Language Models: Understand natural language. 
+Make decisions. 
+Use tools effectively. 
+Alternate turns with users. 
+Workflow Agents
+
+Control flow between sub-agents. 
+Not powered by LLMs → They don’t reason, just orchestrate. 
+Ensure deterministic execution: Same input → same sequence. 
+Useful for structured, predictable processes. 
+
+
+3. Workflow Agent Types
+
+Sequential Agent: Executes agents one after another in a fixed order. 
+Example: Order Processing → Validation → Inventory → Payment → Confirmation. 
+Loop Agent: Repeats a set of agents until a condition is met. 
+Example: Research Agent → Fetch data → Analyze → Check completeness → Repeat if needed. 
+Parallel Agent: Runs multiple agents simultaneously. 
+Best for tasks with independent sub-tasks. 
+Example: Generate reports for different regions in parallel. 
+Custom Workflow Agent: Define custom orchestration logic. 
+For complex workflows, stateful interactions, and business rules. 
+
+
+4. Key Benefits
+
+Predictability: Tree structure + deterministic workflows. 
+Flexibility: Custom agents for advanced needs. 
+Performance: Parallel execution for speed. 
+
+
+✅ Memory Tip:
+Think of ADK workflow agents as Directors:
+
+Sequential = “Step-by-step director” 
+Loop = “Repeat until perfect” 
+Parallel = “All at once” 
+Custom = “Creative director” 
+
