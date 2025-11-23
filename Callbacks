@@ -1,0 +1,65 @@
+
+Callbacks in Agent Development Kit (ADK)
+What are Callbacks?
+
+Definition: Functions that intercept an agent’s execution at predefined points. 
+Purpose: Observe, modify, or augment agent operations. 
+How: Define a Python function → Register with agent → Framework invokes at specific lifecycle stages. 
+
+
+Types of Callbacks
+Agent Lifecycle Callbacks
+Available for any agent inheriting from BaseAgent (e.g., LLM Agent, Sequential Agent).
+
+before_agent_callback:Fires before run() starts. 
+Use for:Setup resources 
+Validate session state 
+Log entry point 
+Modify state or skip execution (return cached/default response). 
+after_agent_callback:Fires after run() completes (unless skipped). 
+Use for:Cleanup tasks 
+Post-validation 
+Log completion 
+Modify final state/output. 
+
+
+LLM Interaction Callbacks (specific to LLM Agent)
+
+before_model_callback:Fires before sending request to LLM. 
+Use for:Add dynamic instructions 
+Inject few-shot examples 
+Modify config 
+Implement guardrails or caching. 
+If returns LLM Response, skips LLM call. 
+after_model_callback:Fires after LLM response received. 
+Use for:Log outputs 
+Reformat response 
+Censor sensitive info 
+Parse structured data. 
+
+
+Tool Execution Callbacks (specific to LLM Agent)
+
+before_tool _callback:Fires before tool’s run() executes. 
+Use for:Inspect/modify arguments 
+Authorization checks 
+Logging or caching. 
+If returns a dictionary, skips tool execution. 
+after_tool_tallback:Fires after tool completes. 
+Use for:Log results 
+Post-process or format 
+Save parts of result. 
+Returning new dictionary replaces original result. 
+
+
+Key Takeaways
+
+Callbacks = interception points for customization. 
+Can skip execution by returning alternative output. 
+Useful for logging, validation, caching, guardrails, and post-processing. 
+
+
+ ✅ Tip to Remember:
+“Before = Prepare or Skip, After = Clean or Modify.”
+For LLM: Before Model → tweak request; After Model → tweak response.
+For Tools: Before Tool → check args; After Tool → refine result.
