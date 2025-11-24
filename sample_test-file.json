@@ -1,0 +1,21 @@
+[{
+  "query": "hi",
+  "expected_tool_use": [],
+  "reference": "Hello! What can I do for you?\n"
+},
+  {
+    "query": "roll a die for me",
+    "expected_tool_use": [
+      {
+        "tool_name": "roll_die",
+        "tool_input": {
+          "sides": 6
+        }
+      }
+    ]
+  },
+  {
+    "query": "what's the time now?",
+    "expected_tool_use": [],
+    "reference": "I'm sorry, I cannot access real-time information, including the current time. My capabilities are limited to rolling dice and checking prime numbers. \n"
+  }]
